@@ -1,23 +1,106 @@
 @font-face {
-    font-family: Prime;
-    src: url(../public//fonts/madina/Madina.ttf);
+    font-family: Reg-Thin;
+    src: url(../public/fonts/nexa/Nexa-Trial-Thin.ttf);
+}
+
+@font-face {
+    font-family: Reg;
+    src: url(../public/fonts/nexa/Nexa-Trial-Bold.ttf);
 }
 
 body {
-    font-family: Prime;
+    font-family: Reg-Thin;
     scroll-behavior: smooth;
+    height: 300vh;
+}
+
+header {
+    background-image: url(../public/Images/wave.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    background-attachment: scroll;
+    height: 80vh;
 }
 
 
 nav {
     padding: 30px 130px;
-    display: flex;
 }
 
 nav h2 {
+    font-family: Reg;
     font-size: 34px;
+    float: left;
 }
 
 nav h2 svg {
     font-size: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    padding: 0px 16px;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+nav li a svg {
+    color: var(--fourth-color);
+}
+
+.wrapper {
+    width: 20px;
+    height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 3%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(12, 12, 12, 0);
+    border-radius: 30px;
+}
+
+.item {
+    width: inherit;
+    height: inherit;
+    background: var(--third-color);
+    transform-origin: 50% 100%;
+}
+
+.task-box {
+    width: 700px;
+    height: 300px;
+    float: right;
+    margin-right: 30px;
+    border-radius: 30px;
+    background: url(../public/Images/pexels-breakingpic-3243.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transform: skew(-9deg) translate(-35px, 0px);
+    -webkit-transform: skew(-9deg) translate(-35px, 0px);
+    -moz-transform: skew(-9deg) translate(-35px, 0px);
+    box-shadow: 10px 13px 18px -5px rgba(255, 255, 255, 0.55);
+    -webkit-box-shadow: 10px 13px 18px -5px rgba(255, 255, 255, 0.55);
+    -moz-box-shadow: 10px 13px 18px -5px rgba(255, 255, 255, 0.55);
 }
