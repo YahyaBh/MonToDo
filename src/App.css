@@ -7,3 +7,17 @@ body {
     font-family: Prime;
     scroll-behavior: smooth;
 }
+
+
+nav {
+    padding: 30px 130px;
+    display: flex;
+}
+
+nav h2 {
+    font-size: 34px;
+}
+
+nav h2 svg {
+    font-size: 20px;
+}
