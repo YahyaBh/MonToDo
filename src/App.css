@@ -1,0 +1,9 @@
+@font-face {
+    font-family: Prime;
+    src: url(../public//fonts/madina/Madina.ttf);
+}
+
+body {
+    font-family: Prime;
+    scroll-behavior: smooth;
+}

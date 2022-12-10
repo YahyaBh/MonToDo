@@ -1,0 +1,8 @@
+{
+  "short_name": "Mon To Do",
+  "name": "Make your time more organised , make your life more organised",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#3cb4b4",
+  "background_color": "#ffffff"
+}

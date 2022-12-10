@@ -1,0 +1,10 @@
+:root {
+  --primary-color : #ffffff;
+  --secondary-color : #1b1b1b;
+  --third-color : #3cb4b4;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
