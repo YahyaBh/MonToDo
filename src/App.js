@@ -40,8 +40,8 @@ function App() {
 
         <div className='header-container'>
           <div className='header-texts'>
-            <h1>Make Your Time <b>Organized</b></h1>
-            <p>Make each task with it specific time , to make your life a lot easier <br/>and make your time much meanful</p>
+            <h1>Make Your Time <b style={{color : 'rgb(var(--orange-color))'}}>Organized</b></h1>
+            <p>Make each task with it specific time , to make your life a lot easier <br />and make your time much meanful</p>
           </div>
           <div className='task-box'></div>
         </div>
