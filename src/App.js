@@ -4,6 +4,7 @@ import { BsCardChecklist } from 'react-icons/bs';
 import { BiListPlus } from 'react-icons/bi';
 import { AiFillStar, AiFillHome } from 'react-icons/ai';
 import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { Link } from 'react-scroll';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <>
-      <header>
+      <header name="home">
 
         <div className="wrapper">
           <motion.div
@@ -31,10 +32,10 @@ function App() {
         <nav>
           <ul>
             <h2>MonToDo</h2>
-            <li><a href="#home">HOME <AiFillHome /></a></li>
-            <li><a href="#news">TASKS <BsCardChecklist /></a></li>
-            <li><a href="#contact">STARED  <AiFillStar /></a></li>
-            <li><a href="#contact">CREATE  <BiListPlus /></a></li>
+            <li><Link activeClass="active" to="home" spy={true} smooth={true} duration={500} >HOME<AiFillHome /></Link></li>
+            <li><Link activeClass="active" to="tasks" spy={true} smooth={true} duration={500} >TASKS <BsCardChecklist /></Link></li>
+            <li><Link activeClass="active" to="stared" spy={true} smooth={true} duration={500} >STARED  <AiFillStar /></Link></li>
+            <li><Link activeClass="active" to="create" spy={true} smooth={true} duration={500} >CREATE  <BiListPlus /></Link></li>
           </ul>
         </nav>
 
@@ -49,8 +50,8 @@ function App() {
       </header>
 
 
-      <section>
-
+      <section id='tasks' name="tasks">
+          <h2>YOUR TASKS</h2>
       </section>
     </>
   );
