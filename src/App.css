@@ -85,7 +85,7 @@ nav li a svg {
 .item {
     width: inherit;
     height: inherit;
-    background: var(--highlight-color);
+    background: rgb(var(--fourth-color));
     transform-origin: 50% 100%;
 }
 
