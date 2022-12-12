@@ -21,22 +21,23 @@ function App() {
     const items = JSON.parse(localStorage.getItem('tasks'));
     if (items) {
       setItems(items);
-      console.log(items);
     }
-  }, [taskInput]);
+  }, [items]);
 
 
   const SaveTask = () => {
     if (input.length !== 0) {
       taskInput.push(input);
-      localStorage.setItem('items', JSON.stringify(items));
+      localStorage.setItem('tasks', JSON.stringify([taskInput]));
+      setInput('');
+      window.location.reload(false);
     }
 
   }
 
+
   const handleTaskInput = (e) => {
     setInput(e);
-    console.log(input);
   }
 
 
@@ -81,16 +82,21 @@ function App() {
 
       <section id='tasks' name="tasks">
         <h2>YOUR TASKS</h2>
+        
+
+
+
+        <div class="form__group field">
+          <input value={input} onChange={(e) => handleTaskInput(e.target.value)} type="input" class="form__field" placeholder="Task" name="task" id='task' />
+          <button onClick={SaveTask}>Check</button>
+          <label for="name" class="form__label">Add Task</label>
+        </div>
+
+
+
         {items.map((item) => (
           <h2>{item}</h2>
         ))}
-
-
-
-
-        <input name='task' onChange={(e) => handleTaskInput(e.target.value)} />
-
-        <button onClick={SaveTask()}>Check</button>
 
       </section>
     </>
