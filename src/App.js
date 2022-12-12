@@ -13,28 +13,30 @@ function App() {
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
 
-  const [items, setItems] = useState(['hello' , 'weclome']);
+  const [items, setItems] = useState([]);
+  const [input, setInput] = useState('');
   const [taskInput, setTaskInput] = useState([]);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('items'));
+    const items = JSON.parse(localStorage.getItem('tasks'));
     if (items) {
       setItems(items);
       console.log(items);
     }
-  }, []);
+  }, [taskInput]);
 
 
-  function SaveTask() {
-    if (taskInput.length !== 0) {
-      setItems(taskInput);
+  const SaveTask = () => {
+    if (input.length !== 0) {
+      taskInput.push(input);
       localStorage.setItem('items', JSON.stringify(items));
-      setTaskInput('');
     }
-    // else {
-    //   alert('Can not be empty !')
-    // }
 
+  }
+
+  const handleTaskInput = (e) => {
+    setInput(e);
+    console.log(input);
   }
 
 
@@ -79,15 +81,14 @@ function App() {
 
       <section id='tasks' name="tasks">
         <h2>YOUR TASKS</h2>
-        {items.length === 0 ? 'Data Not Saved' :
-          items.map((item, index) => (
-            <h3 key={index}>{item}</h3>
-          ))}
+        {items.map((item) => (
+          <h2>{item}</h2>
+        ))}
 
 
 
 
-        <input name='task' onChange={e => setTaskInput(e.target.value)} />
+        <input name='task' onChange={(e) => handleTaskInput(e.target.value)} />
 
         <button onClick={SaveTask()}>Check</button>
 
