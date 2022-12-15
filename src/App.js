@@ -4,40 +4,48 @@ import { FaClipboardList } from 'react-icons/fa';
 import { BsCardChecklist } from 'react-icons/bs';
 import { BiListPlus } from 'react-icons/bi';
 import { AiFillStar, AiFillHome } from 'react-icons/ai';
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { Link } from 'react-scroll';
 
 
 function App() {
 
-  const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
 
-  const [items, setItems] = useState([]);
+
+  const { scrollYProgress } = useScroll();
+
+  const [items, setItems] = useState([{name : 'getting' , data : 'setting'} , {name : 'getting' , data : 'setting'}]);
   const [input, setInput] = useState('');
-  const [taskInput, setTaskInput] = useState([]);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('tasks'));
-    if (items) {
-      setItems(items);
-    }
-  }, [items]);
+    getTasks();
 
+  }, []);
+
+
+  const getTasks = () => {
+
+
+    var courses = JSON.parse(localStorage.getItem('tasks'));
+    setItems(courses);
+  }
 
   const SaveTask = () => {
     if (input.length !== 0) {
-      taskInput.push(input);
-      localStorage.setItem('tasks', JSON.stringify([taskInput]));
-      setInput('');
+      const date = new Date();
+
+      var courses = JSON.parse(localStorage.getItem('tasks') || '[]');
+      var course = {
+        Name: input,
+        Data: date
+      };
+
+      courses.push(course);
+
+      localStorage.setItem('tasks', JSON.stringify(courses));
       window.location.reload(false);
     }
 
-  }
-
-
-  const handleTaskInput = (e) => {
-    setInput(e);
   }
 
 
@@ -82,21 +90,22 @@ function App() {
 
       <section id='tasks' name="tasks">
         <h2>YOUR TASKS</h2>
-        
 
 
 
-        <div class="form__group field">
-          <input value={input} onChange={(e) => handleTaskInput(e.target.value)} type="input" class="form__field" placeholder="Task" name="task" id='task' />
+
+        <div className="form__group field">
+          <input value={input} onChange={(e) => setInput(e.target.value)} type="input" className="form__field" placeholder="Task" name="task" id='task' />
           <button onClick={SaveTask}>Check</button>
-          <label for="name" class="form__label">Add Task</label>
+          <label htmlFor="name" className="form__label">Add Task</label>
         </div>
 
 
-
-        {items.map((item) => (
-          <h2>{item}</h2>
-        ))}
+        {
+          items.map(userInfo => {
+            return <h1>Task Name : {userInfo.Name} - At {userInfo.Data}</h1>
+          })
+        }
 
       </section>
     </>
