@@ -7,47 +7,71 @@ import { AiFillStar, AiFillHome } from 'react-icons/ai';
 import { motion, useScroll } from "framer-motion";
 import { Link } from 'react-scroll';
 
+import ToDo from './ToDo/todo'
+
 
 function App() {
 
 
 
   const { scrollYProgress } = useScroll();
+  const [tasks2, setTasks2] = useState([]);
 
-  const [items, setItems] = useState([{name : 'getting' , data : 'setting'} , {name : 'getting' , data : 'setting'}]);
-  const [input, setInput] = useState('');
+  const [tasks, setTasks] = useState([
+    {
+      name: "ES 6",
+      completed: false
+    },
+    {
+      name: "Go To Store ",
+      completed: false
+    },
+    {
+      name: "1000",
+      completed: true
+    },
+    {
+      name: " framework ",
+      completed: false
+    },
+    {
+      name: "Buy POTATO",
+      completed: false
+    }
+  ]);
+
+  const [inputValue, setInputValue] = useState('');
+
+
 
   useEffect(() => {
-    getTasks();
+    let myLocalTasks = JSON.parse(window.localStorage.getItem('todos'))
+    setTasks2(myLocalTasks)
 
-  }, []);
-
-
-  const getTasks = () => {
+  }, [])
 
 
-    var courses = JSON.parse(localStorage.getItem('tasks'));
-    setItems(courses);
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    console.log(tasks)
+
   }
 
-  const SaveTask = () => {
-    if (input.length !== 0) {
-      const date = new Date();
+  const formSubmit = (e) => {
+    e.preventDefault();
+    if (inputValue !== '') {
+      const newTask = {
+        task: inputValue,
+        completed: false,
+      }
+      setTasks([...tasks, newTask])
+      setInputValue('')
+      window.localStorage.setItem('todos', JSON.stringify([tasks]))
+    } else {
 
-      var courses = JSON.parse(localStorage.getItem('tasks') || '[]');
-      var course = {
-        Name: input,
-        Data: date
-      };
-
-      courses.push(course);
-
-      localStorage.setItem('tasks', JSON.stringify(courses));
-      window.location.reload(false);
+      console.log('EROR');
     }
-
   }
-
 
 
   return (
@@ -95,17 +119,17 @@ function App() {
 
 
         <div className="form__group field">
-          <input value={input} onChange={(e) => setInput(e.target.value)} type="input" className="form__field" placeholder="Task" name="task" id='task' />
-          <button onClick={SaveTask}>Check</button>
+          <input type="input" value={inputValue} onChange={handleChange} className="form__field" placeholder="Task" name="task" id='task' />
+          <button onClick={formSubmit}>Check</button>
           <label htmlFor="name" className="form__label">Add Task</label>
         </div>
 
+        <div className='todo-container'>
 
-        {
-          items.map(userInfo => {
-            return <h1>Task Name : {userInfo.Name} - At {userInfo.Data}</h1>
-          })
-        }
+          {tasks.map((task, index) => (
+            <ToDo key={index} task={task} />
+          ))}
+        </div>
 
       </section>
     </>

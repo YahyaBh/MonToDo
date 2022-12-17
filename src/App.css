@@ -111,7 +111,7 @@ nav li a svg {
     background: url(../public/Images/tasks.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     transform: skew(-9deg) translate(-35px, 0px);
     -webkit-transform: skew(-9deg) translate(-35px, 0px);
     -moz-transform: skew(-9deg) translate(-35px, 0px);
@@ -141,7 +141,7 @@ nav li a svg {
 .form__field {
     width: 80%;
     border: 0;
-    border-bottom: 2px solid  rgb(var(--fourth-color));
+    border-bottom: 2px solid rgb(var(--fourth-color));
     outline: 0;
     font-size: 1.3rem;
     color: rgb(var(--dark-color));
@@ -209,4 +209,17 @@ nav li a svg {
     display: table-cell;
     font-family: Reg-Thin;
     cursor: pointer;
+}
+
+
+
+.todo-container {
+    background-color: #fff;
+    width: 90%;
+    height: 611px;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 26px;
+    padding: 20px;
+    text-align: center;
 }
