@@ -17,6 +17,8 @@ function App() {
   const { scrollYProgress } = useScroll();
   const [tasks2, setTasks2] = useState([]);
 
+
+
   const [tasks, setTasks] = useState([
     {
       name: "ES 6",
@@ -52,25 +54,22 @@ function App() {
 
 
   const handleChange = (e) => {
-    setInputValue(e.target.value);
-    console.log(tasks)
-
+    let updatedValue = {};
+    setInputValue(e.target.value)
+    const d = new Date();
+    updatedValue = { task: e.target.value, date: d.getFullYear() };
+    setTasks2(task2 => ({
+      ...task2,
+      ...updatedValue
+    }));
   }
+
 
   const formSubmit = (e) => {
     e.preventDefault();
-    if (inputValue !== '') {
-      const newTask = {
-        task: inputValue,
-        completed: false,
-      }
-      setTasks([...tasks, newTask])
-      setInputValue('')
-      window.localStorage.setItem('todos', JSON.stringify([tasks]))
-    } else {
-
-      console.log('EROR');
-    }
+    console.log([tasks2]);
+    window.localStorage.setItem('todos', JSON.stringify([tasks2]));
+    setInputValue('');
   }
 
 
@@ -129,6 +128,8 @@ function App() {
           {tasks.map((task, index) => (
             <ToDo key={index} task={task} />
           ))}
+
+          
         </div>
 
       </section>
