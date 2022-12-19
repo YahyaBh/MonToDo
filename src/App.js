@@ -47,28 +47,21 @@ function App() {
 
 
   useEffect(() => {
-    let myLocalTasks = JSON.parse(window.localStorage.getItem('todos'))
-    setTasks2(myLocalTasks)
-
+    let tasks = JSON.parse(window.localStorage.getItem('todos'))
+    setTasks2(tasks)
   }, [])
 
-
   const handleChange = (e) => {
-    let updatedValue = {};
-    setInputValue(e.target.value)
-    const d = new Date();
-    updatedValue = { task: e.target.value, date: d.getFullYear() };
-    setTasks2(task2 => ({
-      ...task2,
-      ...updatedValue
-    }));
+    setInputValue(e.target.value);
+    const d = Date.now();
+    setTasks2({name : inputValue , date : d});
+    console.log({name : inputValue , date : d});
   }
 
 
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log([tasks2]);
-    window.localStorage.setItem('todos', JSON.stringify([tasks2]));
+    window.localStorage.setItem('todos', JSON.stringify(tasks2));
     setInputValue('');
   }
 
