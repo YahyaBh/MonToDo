@@ -223,3 +223,24 @@ nav li a svg {
     padding: 20px;
     text-align: center;
 }
+
+.todo-container ul {
+    padding: 0 20px;
+    list-style: none;
+}
+
+
+.Todo {
+    display: flex;
+    justify-content: center;
+}
+
+.Todo li {
+    font-size: 20px;
+    transition: all .4s ease;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.589);
+}

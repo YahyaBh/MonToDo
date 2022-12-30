@@ -1,7 +1,5 @@
 import React, { useState, useReducer } from "react";
-import ReactDOM from "react-dom";
 import { v4 as uuidv4 } from 'uuid';
-import "./newTodoForm.css";
 
 function NewTodoForm({ task, createTodo }) {
     const [userInput, setUserInput] = useReducer(
@@ -23,18 +21,21 @@ function NewTodoForm({ task, createTodo }) {
     };
 
     return (
-        <form className="NewTodoForm" onSubmit={handleSubmit}>
-            <label htmlFor="task">New todo</label>
-            <input
-                value={userInput.task}
+
+        <form className="form__group field" onSubmit={handleSubmit}>
+
+            <input value={userInput.task}
                 onChange={handleChange}
                 id="task"
                 type="text"
                 name="task"
-                placeholder="New Todo"
+                className="form__field" placeholder="Task"
             />
+            <label htmlFor="task" className="form__label">New todo</label>
+
             <button>Add Todo</button>
         </form>
+
     );
 }
 
