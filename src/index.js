@@ -1,12 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import TodoList from "./TodoList.js";
+import "./styles.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// Project for Udemy react bootcamp
+// https://www.udemy.com/course/modern-react-bootcamp/
 
+function App() {
+  return (
+    <div className="App">
+      <TodoList />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);

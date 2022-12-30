@@ -1,10 +1,26 @@
+import React from 'react';
+import Item from './Item';
+import PropTypes from 'prop-types';
 
-import './style.scss'
+const ToDoList = ({ toDoItems }) => {
 
-export default function ToDo(params) {
     return (
-        <div className="todo">
-            <h3>{params.task.name}</h3>
-        </div>
-    )
+        <ul>
+            {toDoItems.map(({ id, content, complete }) => (
+                <Item id={id} content={content} complete={complete} />
+            ))}
+        </ul>
+    );
 }
+
+ToDoList.propTypes = {
+    toDoItems: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            content: PropTypes.string.isRequired,
+            complete: PropTypes.bool.isRequired,
+        })
+    ).isRequired,
+};
+
+export default ToDoList;
