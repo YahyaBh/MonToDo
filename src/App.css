@@ -233,14 +233,92 @@ nav li a svg {
 .Todo {
     display: flex;
     justify-content: center;
+    padding: 10px 0px;
+    box-shadow: 0 0 33px -20px;
+    border-radius: 8px;
+    margin: 8px 220px;
+    transition: all .5s ease;
+}
+
+.disabled {
+    opacity: .7;
+    box-shadow: 0 0 33px -10px;
 }
 
 .Todo li {
     font-size: 20px;
     transition: all .4s ease;
+    cursor: pointer;
 }
 
 .completed {
     text-decoration: line-through;
     color: rgba(0, 0, 0, 0.589);
+}
+
+
+.Todo-buttons button:nth-child(1) {
+    background-color: #d9534f;
+    border: none;
+    outline: none;
+    color: white;
+    width: 60px;
+    height: 100%;
+    margin: 0px 7px;
+    font-size: 15px;
+    border-radius: 6px;
+    transition: all .5s ease;
+    cursor: pointer;
+
+}
+
+.Todo-buttons button:nth-child(1):hover {
+    background-color: black;
+    color: #d9534f;
+    transform: scale(0.9);
+}
+
+
+.Todo-buttons button:nth-child(2) {
+    background-color: #f68a4c;
+    border: none;
+    outline: none;
+    color: white;
+    width: 60px;
+    height: 100%;
+    margin: 0px 7px;
+    font-size: 15px;
+    border-radius: 6px;
+    transition: all .5s ease;
+    cursor: pointer;
+}
+
+.Todo-buttons button:nth-child(2):hover {
+    background-color: black;
+    color: #f68a4c;
+    transform: scale(0.9);
+}
+
+.Todo-edit-form input {
+    height: 40px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    margin-bottom: 5px;
+}
+
+.Todo-edit-form button {
+    height: 40px;
+    width: 100%;
+    background-color: #57ac57;
+    border: none;
+    border-radius: 7px;
+    transition: all .5s ease;
+}
+
+.Todo-edit-form button:hover {
+    transform: scale(.9);
+    background-color: #537753;
+    cursor: pointer;
 }

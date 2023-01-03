@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useState, useReducer } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -15,7 +16,7 @@ function NewTodoForm({ task, createTodo }) {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        const newTodo = { id: uuidv4(), task: userInput.task, completed: false };
+        const newTodo = { id: uuidv4(), task: userInput.task, completed: false , date: moment().format("MMMM Do YYYY, h:mm:ss a")};
         createTodo(newTodo);
         setUserInput({ task: "" });
     };

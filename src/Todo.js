@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import moment from "moment/moment";
 
 function Todo({ todo, remove, update, toggleComplete }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -22,6 +23,7 @@ function Todo({ todo, remove, update, toggleComplete }) {
         toggleComplete(evt.target.id);
     };
 
+
     let result;
     if (isEditing) {
         result = (
@@ -34,14 +36,14 @@ function Todo({ todo, remove, update, toggleComplete }) {
         );
     } else {
         result = (
-            <div className="Todo">
+            <div className={todo.completed ? "Todo disabled" : "Todo "}>
                 <li
                     id={todo.id}
                     onClick={toggleCompleted}
                     className={todo.completed ? "Todo-task completed" : "Todo-task"}
                 >
-                    {todo.task}
-                </li>
+                    {todo.task} </li>
+                <sup style={{fontSize : '14px' , marginLeft : '2px'}}> {moment(todo.date, "MMMM Do YYYY, h:mm:ss a").fromNow()}</sup>
                 <div className="Todo-buttons">
                     <button onClick={toggleFrom}>
                         <i className="fas fa-pen" />

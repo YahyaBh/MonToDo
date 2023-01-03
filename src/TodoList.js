@@ -15,10 +15,7 @@ function TodoList() {
     const { scrollYProgress } = useScroll();
 
 
-    const [todos, setTodos] = useState([
-        { id: uuidv4(), task: "task 1", completed: false },
-        { id: uuidv4(), task: "task 2", completed: true }
-    ]);
+    const [todos, setTodos] = useState([]);
 
 
 
@@ -30,13 +27,14 @@ function TodoList() {
     }, []);
 
     const create = newTodo => {
-        console.log(newTodo);
         setTodos([...todos, newTodo]);
         localStorage.setItem('items', JSON.stringify([...todos, newTodo]));
     };
 
     const remove = id => {
-        setTodos(todos.filter(todo => todo.id !== id));
+        const updatedTodos = todos.filter(todo => todo.id !== id);
+        setTodos(updatedTodos);
+        localStorage.setItem('items', JSON.stringify(updatedTodos));
     };
 
     const update = (id, updtedTask) => {
@@ -47,6 +45,7 @@ function TodoList() {
             return todo;
         });
         setTodos(updatedTodos);
+        localStorage.setItem('items', JSON.stringify(updatedTodos));
     };
 
     const toggleComplete = id => {
@@ -57,14 +56,19 @@ function TodoList() {
             return todo;
         });
         setTodos(updatedTodos);
+        localStorage.setItem('items', JSON.stringify(updatedTodos));
     };
 
-    const todosList = todos.map(todo => (
+
+
+
+
+    const todosList = todos.map((todo, index) => (
         <Todo
             toggleComplete={toggleComplete}
             update={update}
             remove={remove}
-            key={todo.id}
+            key={index}
             todo={todo}
         />
     ));
@@ -115,13 +119,19 @@ function TodoList() {
 
                 <div className='todo-container'>
 
-                    <ul>{todosList}</ul>
+                    {todos ? <ul>{todosList}</ul> : <h1>No Tasks </h1>}
+
 
 
                 </div>
 
 
             </section>
+
+
+            <footer>
+
+            </footer>
 
         </>
     );
